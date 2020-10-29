@@ -2,9 +2,9 @@ package src.java.main;
 import javax.swing.JFrame;
 
 public class logIn {
-    public boolean logInPage(boolean x){
+    public boolean logInPage(boolean b){
         JFrame frame = new Jframe();
-        frame.setVisible(x);
-        return x;
+        frame.setVisible(b);
+        return b;
     }
 }
