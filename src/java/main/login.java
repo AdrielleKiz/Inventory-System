@@ -1,4 +1,5 @@
 package src.java.main;
+
 import javax.swing.JFrame;
 
 public class login {
@@ -9,7 +10,5 @@ public class login {
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setLocation(500, 150);
-
-
     }
 }

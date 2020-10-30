@@ -6,9 +6,9 @@ import java.util.Formatter;
 import javax.swing.JFrame;
 
 public class init {
-    public void createFile() {
+    public void initFile() {
         String currentDir = System.getProperty("user.dir");
-        final String user_filepath = "D:\\Users\\Adrielle\\OneDrive - STI College Cubao\\Second year\\HCI\\Inventory System\\user.txt";
+        final String user_filepath = currentDir + "\\user.txt";
         File filepath = new File(user_filepath);
         Formatter user_db;
 
