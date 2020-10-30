@@ -27,9 +27,4 @@ public class init {
             }
         }
     }
-    public boolean landingPage(boolean x) {
-        JFrame frame = new JFrame();
-        frame.setVisible(x);
-        return x;
-    }
 }
