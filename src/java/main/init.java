@@ -18,7 +18,7 @@ public class init {
             System.out.println(filepath.getPath());
         } else {
             System.out.println("File isnt created");
-            System.out.print("Creating File...");
+            System.out.print("Creating File in" + user_filepath);
             try {
                 user_db = new Formatter(user_filepath);
             } catch (FileNotFoundException e) {
