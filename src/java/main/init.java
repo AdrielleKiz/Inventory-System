@@ -4,11 +4,13 @@ import java.io.FileNotFoundException;
 import java.util.Formatter;
 
 public class init {
+    String currentDir = System.getProperty("user.dir");
+    final String user_filepath = currentDir + "\\user.txt";
+    File filepath = new File(user_filepath);
+    Formatter user_db;
+
     public void initFile() {
-        String currentDir = System.getProperty("user.dir");
-        final String user_filepath = currentDir + "\\user.txt";
-        File filepath = new File(user_filepath);
-        Formatter user_db;
+
 
         if (filepath.exists()) {
 
@@ -19,10 +21,13 @@ public class init {
             System.out.print("Creating File in" + user_filepath);
             try {
                 user_db = new Formatter(user_filepath);
+                System.out.println(user_db);
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
     }
+
+    
 }

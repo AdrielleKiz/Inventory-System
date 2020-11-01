@@ -1,29 +1,19 @@
 package src.java.main;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JsignInGui;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
+import java.awt.*;
 
-public class login implements ActionListener {
-    private String user_name;
-    private String user_pass;
-    JTextField userfield = new JTextField("enter username", 20);
-    JTextField userpass = new JTextField("enter pass", 20);
+public class login{
+
+    JTextField userfield = new JTextField(20);
+    JTextField userpass = new JTextField(20);
     JButton signButton = new JButton("Sign In");
 
     public void prepareGui() {
         //set constructors
         JFrame signInGui = new JFrame();
-        JTextField userfield = new JTextField("enter username", 20);
-        JTextField userpass = new JTextField("enter pass", 20);
-        JButton signButton = new JButton("Sign In");
-
         //signInGui attr
         signInGui.setTitle("Sign in Page");
         signInGui.setSize(600, 500);
@@ -32,37 +22,59 @@ public class login implements ActionListener {
         signInGui.setLocation(500, 150);
         signInGui.setVisible(true);
         signInGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //login panel attr
-        JPanel pan1 = new JPanel(new BorderLayout());
-        pan1.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        pan1.add(userfield,BorderLayout.NORTH);
-        pan1.add(userpass,BorderLayout.CENTER);
-        pan1.add(signButton,BorderLayout.SOUTH);
-        
-        signInGui.setContentPane(pan1);
-        signInGui.pack();
 
-        signButton.addActionListener(this);
+
+        //login panel attr
+        JPanel leftpan = new JPanel(new BorderLayout());
+        leftpan.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        JPanel rightpan = new JPanel(new BorderLayout());
+        rightpan.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        JPanel outerpan = new JPanel(new BorderLayout());
+
+        outerpan.add(rightpan, BorderLayout.EAST);
+        outerpan.add(leftpan, BorderLayout.WEST);
+        JLabel userNameLabel = new JLabel("Username", JLabel.LEFT);
+        JLabel userPassLabel = new JLabel("Password", JLabel.LEFT);
+        JLabel blank = new JLabel("\s\s\s\s", JLabel.LEFT);
+
+        rightpan.add(userfield, BorderLayout.NORTH);
+        rightpan.add(userpass, BorderLayout.CENTER);
+        rightpan.add(signButton, BorderLayout.SOUTH);
+        
+        leftpan.add(userNameLabel, BorderLayout.NORTH);
+        leftpan.add(userPassLabel, BorderLayout.CENTER);
+        leftpan.add(blank, BorderLayout.SOUTH);
+
+        signButton.setActionCommand("Sign In");
+        signButton.addActionListener(new signin());
+        
+        signInGui.setContentPane(outerpan);
+        signInGui.pack();
+        
                
     }
-
-    public String getName(){
-        return user_name;
-    }
-
-    public String getPass(){
-        return user_pass;
-    }
-
         //signin
-    public void actionPerformed(ActionEvent e){
-        this.user_name = userfield.getText();
-        this.user_pass = userpass.getText();
+public class signin implements ActionListener{
+    private String user_name;
+    private String user_pass;
 
-        System.out.println(getName());
-        System.out.println(getPass());
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        String command = e.getActionCommand();
+
+        if(command.equals("Sign In")){
+            this.user_name = userfield.getText();
+            this.user_pass = userpass.getText();
+            System.out.println(this.user_name);
+            System.out.println(this.user_pass);
+
+        }
         
+
     }
+    
+
+}
 
 
 
