@@ -3,8 +3,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Formatter;
 
-import javax.swing.JFrame;
-
 public class init {
     public void initFile() {
         String currentDir = System.getProperty("user.dir");
