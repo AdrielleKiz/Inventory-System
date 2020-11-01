@@ -7,12 +7,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
+import java.awt.event.*;
 
-public class login {
+public class login implements ActionListener {
     private String user_name;
     private String user_pass;
+    JTextField userfield = new JTextField("enter username", 20);
+    JTextField userpass = new JTextField("enter pass", 20);
+    JButton signButton = new JButton("Sign In");
 
-    public void prepareGui(boolean b) {
+    public void prepareGui() {
         //set constructors
         JFrame frame = new JFrame();
         JTextField userfield = new JTextField("enter username", 20);
@@ -25,7 +29,7 @@ public class login {
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setLocation(500, 150);
-        frame.setVisible(b);
+        frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //login panel attr
         JPanel pan1 = new JPanel(new BorderLayout());
@@ -37,32 +41,36 @@ public class login {
         frame.setContentPane(pan1);
         frame.pack();
 
+        signButton.addActionListener(this);
+
         /* frame.getContentPane().add(userfield, BorderLayout.NORTH);
         frame.getContentPane().add(userpass, BorderLayout.CENTER);
         frame.getContentPane().add(signButton, BorderLayout.SOUTH);
  */
+               
+    }
+
+    public String getName(){
+        return user_name;
+    }
+
+    public String getPass(){
+        return user_pass;
+    }
+
+        //signin
+    public void actionPerformed(ActionEvent e){
+        this.user_name = userfield.getText();
+        this.user_pass = userpass.getText();
+
+        System.out.println(getName());
+        System.out.println(getPass());
         
-        
     }
 
-    private String getName(){
-        return getName();
-    }
 
-    private void setName(String username){
-        this.user_name = username;
 
-    }
-    private String getPass(){
-        return getPass();
-    }
 
-    private void setPass(String password){
-        this.user_pass = password;
 
-    }
-
-    
-        
     
 }
