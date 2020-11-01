@@ -26,16 +26,17 @@ public class login {
         frame.setResizable(false);
         frame.setLocation(500, 150);
         frame.setVisible(b);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //login panel attr
         JPanel pan1 = new JPanel(new BorderLayout());
         pan1.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         pan1.add(userfield,BorderLayout.NORTH);
         pan1.add(userpass,BorderLayout.CENTER);
         pan1.add(signButton,BorderLayout.SOUTH);
-
+        
         frame.setContentPane(pan1);
         frame.pack();
-        
+
         /* frame.getContentPane().add(userfield, BorderLayout.NORTH);
         frame.getContentPane().add(userpass, BorderLayout.CENTER);
         frame.getContentPane().add(signButton, BorderLayout.SOUTH);
