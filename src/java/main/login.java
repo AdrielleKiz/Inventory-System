@@ -2,17 +2,15 @@ package src.java.main;
 
 import javax.swing.*;
 
-import sun.awt.www.content.audio.basic;
-
 import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 import java.io.*;
 
 public class login extends init implements ActionListener {
     public String user_name;
     public String user_pass;
+    public boolean lever;
 
     JTextField userfield = new JTextField(20);
     JTextField userpass = new JTextField(20);
@@ -57,19 +55,6 @@ public class login extends init implements ActionListener {
         signInGui.setContentPane(outerpan);
         signInGui.pack();
     }
-    public void setUserNametf(ActionEvent b){
-        String command = b.getActionCommand();
-        if (command.equals("Sign In")) {
-        this.user_name = userfield.getText();
-        }
-    }
-    //set userpass
-    public void setUserPasstf(ActionEvent e){      
-        String command = e.getActionCommand();
-        if (command.equals("Sign In")) {
-        this.user_pass = userpass.getText();
-        }
-    }
 /* 
     public String getUserNametf(String user_name){
         return user_name;
@@ -82,6 +67,8 @@ public class login extends init implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         String command = e.getActionCommand();
+        this.user_pass = userpass.getText();
+        this.user_name = userfield.getText();
         if (command.equals("Sign In")) {
         try {
             Scanner sc;
@@ -100,14 +87,18 @@ public class login extends init implements ActionListener {
                         counter++;
                         System.out.println("pass: " + pass + "" + " userpass: "+ user_pass);
                         System.out.println("Proper Credentials");
-                        linecredentials.close();
-                        sc.close();
+                        lever = true;
+                        
+                        break;
+/*                         linecredentials.close();
+                        sc.close(); */
                         }else{
                             System.out.println("Wrong Credentials");
+                        lever = false;
                         }
+                    }else{
+                        lever = false;
                     }
-
-                    
                 }
             } catch (FileNotFoundException e1) {
                 // TODO Auto-generated catch block
@@ -116,16 +107,4 @@ public class login extends init implements ActionListener {
 
         }
     }
-    
-/*     public String getUserName(){
-        return user_name;
-    }
-    public String getUserPass(){
-        return user_pass;
-    } */
-
-
-
-
-    
 }
