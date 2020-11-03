@@ -7,7 +7,7 @@ import java.awt.event.*;
 import java.util.Scanner;
 import java.io.*;
 
-public class login extends init implements ActionListener {
+public class login extends init {
     public String user_name;
     public String user_pass;
     public boolean lever;
@@ -50,8 +50,53 @@ public class login extends init implements ActionListener {
         leftpan.add(blank, BorderLayout.SOUTH);
 
         signButton.setActionCommand("Sign In");
-        signButton.addActionListener(this);
-
+        signButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                //Setters
+                String command = e.getActionCommand();
+                user_pass = userpass.getText();
+                user_name = userfield.getText();
+                if (command.equals("Sign In")) {
+                try {
+                    Scanner sc;
+                    int counter = 0;         
+                        sc = new Scanner(filepath);
+                        while(sc.hasNext() && counter != 2 && sc.hasNextLine()){
+                            sc.useDelimiter("[,]");
+                            String line = sc.nextLine();
+                            Scanner linecredentials = new Scanner(line);
+                            String user = linecredentials.next();
+                            String pass = linecredentials.next();
+                            if(user.equals(user_name)){
+                                counter++;
+                                System.out.println("user: "+ user + " user_name: " + user_name);
+                                if(pass.equals(user_pass)){
+                                counter++;
+                                System.out.println("pass: " + pass + "" + " userpass: "+ user_pass);
+                                System.out.println("Proper Credentials");
+                                lever = true;
+                                signInGui.setVisible(false);
+                                sc.close();
+                                linecredentials.close();
+                                }else{
+                                    System.out.println("Wrong Credentials");
+                                lever = false;
+                                }
+                            }else{
+                                System.out.println("Wrong Credentials");
+                                lever = false;
+                            }
+                        }
+                    } catch (FileNotFoundException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+        
+                }
+            }
+        }
+        );
         signInGui.setContentPane(outerpan);
         signInGui.pack();
     }
@@ -64,8 +109,9 @@ public class login extends init implements ActionListener {
     } */
 
     // Sign In Verification
-    public void actionPerformed(ActionEvent e) {
+    /* public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+        //Setters
         String command = e.getActionCommand();
         this.user_pass = userpass.getText();
         this.user_name = userfield.getText();
@@ -88,15 +134,14 @@ public class login extends init implements ActionListener {
                         System.out.println("pass: " + pass + "" + " userpass: "+ user_pass);
                         System.out.println("Proper Credentials");
                         lever = true;
-                        
-                        break;
-/*                         linecredentials.close();
-                        sc.close(); */
+                        sc.close();
+                        linecredentials.close();
                         }else{
                             System.out.println("Wrong Credentials");
                         lever = false;
                         }
                     }else{
+                        System.out.println("Wrong Credentials");
                         lever = false;
                     }
                 }
@@ -106,5 +151,5 @@ public class login extends init implements ActionListener {
             }
 
         }
-    }
+    } */
 }
