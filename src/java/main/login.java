@@ -11,12 +11,11 @@ public class login extends init {
     public String user_name;
     public String user_pass;
     public boolean lever;
-
     JTextField userfield = new JTextField(20);
     JTextField userpass = new JTextField(20);
     JButton signButton = new JButton("Sign In");
 
-    public void prepareGui() {
+    public void loginGui() {
         // set constructors
         JFrame signInGui = new JFrame();
         // signInGui attr

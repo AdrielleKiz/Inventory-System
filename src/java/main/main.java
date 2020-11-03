@@ -5,7 +5,7 @@ public class main{
         init p = new init();
         login a = new login();
         p.initFile();
-        a.prepareGui();
+        a.loginGui();
 
         
 
